@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POST Request Counter</title>
+</head>
+
+<body>
+  <h1>POST Request Counter</h1>
+  <p>Total POST Requests: <span id="postCounter">0</span></p>
+  <button id="sendPostRequest" onclick="updateCounter()">Send POST Request</button>
+
+  <script>
+    // Get a reference to the postCounter element
+    const postCounterElement = document.getElementById('postCounter');
+    
+    // Function to update the POST request counter
+    async function updateCounter() {
+      // Send a POST request to '/post-counter'
+      await fetch('/post-counter', { method: 'POST' })
+      
+      // Send a GET request to '/get-counter' to fetch the updated count
+      await fetch('/get-counter')
+        .then(response => response.json())
+        .then(data => {
+          // Update the postCounter element with the new count
+          postCounterElement.textContent = data.count;
+        });
+
+    }
+  </script>
+</body>
+
+</html>
