@@ -1,3 +1,4 @@
+# jenkins-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,7 +15,7 @@ spec:
     spec:
       containers:
         - name: jenkins
-          image: jenkins/jenkins:lts
+          image:  israelfrank/custom-jenkins-docker:latest
           ports:
             - name: http-port
               containerPort: 8080
