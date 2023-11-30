@@ -1,5 +1,5 @@
-from jenkins/jenkins:lts
- 
+FROM jenkins/jenkins:lts
+
 USER root
 
 RUN apt-get update -qq && apt-get install -qqy apt-transport-https ca-certificates curl gnupg2 software-properties-common
@@ -12,6 +12,9 @@ RUN add-apt-repository \
    stable"
 
 RUN apt-get update -qq && apt-get install -qqy docker-ce docker-ce-cli containerd.io
+
+RUN curl -fsSL https://github.com/krallin/tini/releases/download/v0.19.0/tini -o /sbin/tini \
+    && chmod +x /sbin/tini
 
 RUN usermod -aG docker jenkins
 
