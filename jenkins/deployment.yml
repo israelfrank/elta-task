@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: jenkins
-          image:  israelfrank/custom-jenkins-docker:latest
+          image:   israelfrank/jenkins-dind123
           ports:
             - name: http-port
               containerPort: 8080
